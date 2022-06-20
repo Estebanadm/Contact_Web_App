@@ -20,31 +20,6 @@
   opacity: 0.8;
   flexDirection:'row';
 }
-.headerContainer{
-  display: 'flex';
-  position:'relative';
-  height: 100px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  overflow: hidden;
-}
-.contactsContainer{
-  poisition:relative;
-  height: 600px;
-  display: grid;
-  grid-template-columns:1fr 1fr 1fr;
-  overflow-y: scroll;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-button {
-  background: transparent;
-  border: none !important;
-}
-
 
 ::-webkit-scrollbar {
   width: 0px;

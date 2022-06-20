@@ -5,10 +5,7 @@ import logo from '../../Assets/Images/Profile-1.png';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
-function ContactCard({firstName,lastName,phoneNumber, id}) {
-    const onContactClick = () => {
-      console.log("Contact Card Clicked")
-    }
+function ContactCard({firstName,lastName,phoneNumber, onContactClick}) {
     const contactName=`${firstName} ${lastName}`;
     const phone=phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
     return(
