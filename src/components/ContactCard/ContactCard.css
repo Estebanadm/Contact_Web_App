@@ -1,0 +1,58 @@
+.contactBox{
+    display:flex;
+    background-color: #BEE3DB;
+    width:220px;
+    padding:20px;
+    border-radius: 20px;
+    margin:10px;
+    height: 30px;
+    border: 1px solid #19A4DF;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    flex-direction: row;
+    padding-left:10px;
+    cursor: pointer;
+    transition:transform 200ms ease-in;
+}
+.contactBox:hover{
+    transform:scale(1.1);
+}
+.profilePicture{
+    position:relative;
+    width:65px;
+    height:65px;
+    bottom:57%;
+}
+.contactInfo{
+    position:relative;
+    height:30px;
+    display:flex;
+    width:60%;
+    flex-direction:column;
+    bottom:20px;
+    left:10px;
+    rigt:25px;
+}
+.contactHeader{
+    position:relative;
+    height:30px;
+    display:flex;
+    font-size:12px;
+    font-weight: semi-bold;
+    font-style: normal;
+}
+.contactNumber{
+    position:relative;
+    height:30px;
+    display:flex;
+    font-size:12px;
+    font-weight: semi-bold;
+    font-style: normal;
+    bottom:5px;
+}
+.icon{
+    position:relative;
+    left:10px;
+}
