@@ -23,6 +23,7 @@
   .headerContainer{
     display: 'flex';
     position:'relative';
+    flexDirection:row;
     height: 100px;
     width: 100%;
     align-items: center;
@@ -42,6 +43,18 @@
     poisition:relative;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
+  }
+  .addIconContainer{
+    cursor:pointer;
+    position: relative;
+    margin:auto;
+    left:65%;
+    bottom:20%;
+    border-radius: 60%;
+  }
+  .addIcon{
+    transform: scale(1.8);
+    color:#66AFF5;
   }
   button {
     background: transparent;

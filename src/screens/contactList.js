@@ -7,6 +7,9 @@ import ContactCard from '../components/ContactCard/ContactCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { setContacts } from '../actions/contactActions';
 import cloneDeep from 'lodash/cloneDeep';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import PopUp from '../components/PopUp/PopUp';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,11 +24,15 @@ function ContactList() {
   const navigateToContactInfo = (id) => {
     navigate(`/contactInfo/${id}`);
   };
+  const openAddContact=()=>{
+    navigate("/AddContact");
+  }
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contactsReducer[0])||[];
   const [filterContacts,setFilterContacts] = useState(contacts);
   const [loading,setLoading] = useState(false)
   const [filtering,setFiltering] = useState(false)
+  const [openAddPopUp,setOpenAddPopUp] = useState(false);
   const filterFunction=(text)=>{
     if(text.length>0){
       setFiltering(true)
@@ -54,6 +61,9 @@ function ContactList() {
         <style>{'body {background-color:#89B0AE'}</style>
             <div className={'headerContainer'}>
                 <SearchBar onChangeText={(text)=>filterFunction(text)}/>
+                  <button className={"addIconContainer"} onClick={()=>{openAddContact()}} >
+                    <AddCircleOutlineOutlinedIcon className='addIcon'/>
+                  </button>
             </div>
             <div className={"contactsContainer"}>
             <div className={'gridContainer'}>

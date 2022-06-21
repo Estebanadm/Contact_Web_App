@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setContacts } from './actions/contactActions';
 import ContactInfo from './screens/contactInfo';
 import ContactList from './screens/contactList';
+import AddContact from './screens/addContact';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -26,9 +28,10 @@ function App () {
           <Box className={'boxContainer'}>
             <Routes>
             <Route path="/" element={<ContactList/>}/>
-              <Route path="/ContactInfo" element={<ContactInfo/>}>
-                <Route path=":contactId" element={<ContactInfo/>}/>
-              </Route>
+            <Route path="/ContactInfo" element={<ContactInfo/>}>
+              <Route path=":contactId" element={<ContactInfo/>}/>
+            </Route>
+            <Route path="/AddContact" element={<AddContact/>}/>
             </Routes>
           </Box>
         </div>

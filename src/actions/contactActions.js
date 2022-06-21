@@ -3,7 +3,7 @@ export const addToContacts=(contact)=>{
     console.log("adding : ",contact);
     return{
         type:'ADD_CONTACT',
-        contact
+        contact: appStore.getState().contactsReducer[0].push(contact)
     }
 }
 export const editContact=(contact,index)=>{
