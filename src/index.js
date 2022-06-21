@@ -9,7 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 
 //Store
-let appStore=createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const appStore=createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

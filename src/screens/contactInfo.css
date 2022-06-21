@@ -1,9 +1,4 @@
-.container{
-  display: 'flex';
-  justify-content:'center';
-  align-items:'center';
-  height: '100vh';
-}
+
 .pictureContainer{
     display: 'flex';
     position:absolute;
@@ -13,9 +8,10 @@
     justify-content: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: #E35D6A;
+    background-color:#555B6E;
+    opacity:0.8;
   }
-.profilePicture{
+.infoPicture{
     display: 'flex';
     position:absolute;
     width:300px;
@@ -26,24 +22,89 @@
     left:0;
     right:0;
 }
-  .contactsContainer{
-    poisition:relative;
-    height: 600px;
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr;
-    overflow-y: scroll;
+  .backButton{
+    height:40px;
+    display:flex;
+    flex-direction: row;
+    margin:10px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top:20px;
+  }
+  .buttonText{
+    margin:auto;
+    text-align: center;
+    font-size: 22px;
+    padding:5px;
+    margin-right:4px;
+    color:#001833;
+  }
+  .backIcon{
+    positon:absolute;
+    margin:auto;
+    color:#001833;
+  }
+  .contactInfoContainer{
+    justify-content:'center';
+    align-items:'center';
+    flex-direction: column;
+    position:absolute;
+    display:flex;
+    height:50%;
+    width:100%;
+    margin:auto;
+    bottom:0;
+    left:0;
+    right:0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    opacity:0.8;
+    background-color:#555B6E;
   }
-  button {
-    background: transparent;
-    border: none !important;
+  .contactInput{
+    margin:auto;
+    width:400px;
+    height:30px;
+    display:flex;
+    flex-direction: row;
+  }
+  .infoText{
+    text-align: center;
+    font-size: 15px;
+    margin:auto;
+  }
+  .textInput{
+    width:200px;
+    border-radius: 30px;
+    border: 0.2px solid #555B6E;
+    padding-left:10px;
+    align-text:center;
+    background-color:#555B6E;
+    font-weight: bold;
+  }
+  .addEditButton{
+    height:50px;
+    width:200px;
+    cursor: pointer;
+    margin:auto;
+    border-radius: 30px;
+    background-color: #C1E3ED;
+    opacity:0.8;
+  }
+  .hideButton{
+    height:50px;
+    width:200px;
+    cursor: pointer;
+    margin:auto;
+    border-radius: 30px;
+    background-color: #C1E3ED;
+    opacity:0;
+
   }
   
   
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
-    padding: 0px; 
   }
 

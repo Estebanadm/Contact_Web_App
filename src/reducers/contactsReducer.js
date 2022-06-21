@@ -6,6 +6,8 @@ const contactsReducer=(state=[],payload)=>{
             return [...state,payload.contacts];
         case 'DELETE_CONTACT':
             return [...state,payload.contact];
+        case 'EDIT_CONTACT':
+            return [...state,payload.contacts];
         default:
              return state;
     }
