@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 export default function ContactInfo() {
     const { contactId } = useParams();
     const navigate = useNavigate();
-    const contact=useSelector(state => state.contactsReducer[0]&&state.contactsReducer[0].filter((contact,index)=>{
-        return index===parseInt(contactId)}))||[];
+    const contact=useSelector(state => state.contactsReducer[0]&&state.contactsReducer[0].filter((contact)=>{
+        return contact.id===contactId}))||[];
     const contactInfo=contact[0]||{};
     const dispatch = useDispatch();
   const contacts = useSelector(state => state.contactsReducer[0])||[];
@@ -27,15 +27,39 @@ export default function ContactInfo() {
   const [changeMade,setChangeMade] = useState(false);
   console.log(firstName,lastName,phoneNumber,email);
   const goBack = () => {navigate(`/`);}
+  function validatePhoneNumber(phoneNumber) {
+    var cleaned = ('' + phoneNumber).replace(/\D/g, '');
+    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return match[1] + '-' + match[2] + '-' + match[3];
+    }
+    return null;
+  }
+  function validateEmail(email) {
+    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  
+    return re.test(email);
+  }
   const saveContactInformation=()=>{
+    const validPhoneNumber = validatePhoneNumber(phoneNumber);
+    const validEmail = validateEmail(email);
     const newContact={
       first_name:firstName,
       last_name:lastName,
-      phoneNumber:phoneNumber,
+      phoneNumber:validPhoneNumber,
       email:email
     }
+    if(validPhoneNumber && validEmail){
     dispatch(editContact(newContact,parseInt(contactId)));
     goBack();
+    }else{
+      if(!validPhoneNumber){
+        alert("Please enter a valid phone number");
+      }
+      if(!validEmail){
+        alert("Please enter a valid email");
+      }
+    }
   }
   
   const getData = () => data

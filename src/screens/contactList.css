@@ -33,7 +33,6 @@
   }
   .contactsContainer{
     poisition:relative;
-    height: 600px;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
     overflow-y: scroll;

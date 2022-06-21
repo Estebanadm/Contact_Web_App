@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import ContactCard from '../components/ContactCard/ContactCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { setContacts } from '../actions/contactActions';
+import cloneDeep from 'lodash/cloneDeep';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,12 +18,28 @@ import {
 
 function ContactList() {
   let navigate = useNavigate(); 
-  const navigateToContactInfo = (index) => {
-    navigate(`/contactInfo/${index}`);
+  const navigateToContactInfo = (id) => {
+    navigate(`/contactInfo/${id}`);
   };
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contactsReducer[0])||[];
+  const [filterContacts,setFilterContacts] = useState(contacts);
   const [loading,setLoading] = useState(false)
+  const [filtering,setFiltering] = useState(false)
+  const filterFunction=(text)=>{
+    if(text.length>0){
+      setFiltering(true)
+    }else{
+      setFiltering(false)
+    }
+    const newContacts= cloneDeep(contacts).filter((contact,index)=>{
+      return (contact.first_name.toLowerCase().includes(text.toLowerCase())
+      || contact.last_name.toLowerCase().includes(text.toLowerCase())
+      ||contact.phoneNumber.toLowerCase().includes(text.toLowerCase())
+      ||contact.email.toLowerCase().includes(text.toLowerCase()))
+    })
+    setFilterContacts(newContacts);
+  }
   const getData = () => data
   useEffect(() => {
     setLoading(true)
@@ -36,12 +53,12 @@ function ContactList() {
       <div >
         <style>{'body {background-color:#89B0AE'}</style>
             <div className={'headerContainer'}>
-                <SearchBar/>
+                <SearchBar onChangeText={(text)=>filterFunction(text)}/>
             </div>
             <div className={'contactsContainer'}>
-                {contacts.length > 0 && data.map((contact, index) => {
+                {contacts.length > 0 && (filterContacts>0||filtering?filterContacts:contacts).map((contact, index) => {
                   return(
-                    <Fragment key={index}>
+                    <Fragment key={contact.id}>
                       <button >
                         <ContactCard 
                           firstName={contact.first_name} 
@@ -49,7 +66,7 @@ function ContactList() {
                           phoneNumber={contact.phoneNumber} 
                           id={index}
                           onContactClick={()=>{
-                            navigateToContactInfo(index)
+                            navigateToContactInfo(contact.id)
                           }}
                         />
                       </button>
