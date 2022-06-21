@@ -32,12 +32,16 @@
     overflow: hidden;
   }
   .contactsContainer{
+    poisition:absolute;
+    overflow-y: scroll;
+    height: 600px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .gridContainer{
     poisition:relative;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    overflow-y: scroll;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
   }
   button {
     background: transparent;

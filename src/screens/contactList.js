@@ -55,7 +55,8 @@ function ContactList() {
             <div className={'headerContainer'}>
                 <SearchBar onChangeText={(text)=>filterFunction(text)}/>
             </div>
-            <div className={'contactsContainer'}>
+            <div className={"contactsContainer"}>
+            <div className={'gridContainer'}>
                 {contacts.length > 0 && (filterContacts>0||filtering?filterContacts:contacts).map((contact, index) => {
                   return(
                     <Fragment key={contact.id}>
@@ -73,6 +74,7 @@ function ContactList() {
                     </Fragment>
                   )
                 })}
+            </div>
             </div>
       </div>
   )
