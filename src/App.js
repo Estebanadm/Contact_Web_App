@@ -1,42 +1,34 @@
 /* eslint-disable no-unused-vars */
-import './App.css'
-import React, { useEffect, Fragment, useState } from 'react'
-import data from './Assets/Data/MOCK_DATA.json'
-import Box from '@mui/material/Box'
-import SearchBar from './components/SearchBar/SearchBar';
-import ContactCard from './components/ContactCard/ContactCard';
-import { useSelector, useDispatch } from 'react-redux';
-import { setContacts } from './actions/contactActions';
-import ContactInfo from './screens/contactInfo';
-import ContactList from './screens/contactList';
-import AddContact from './screens/addContact';
-
+import './App.css';
+import React from 'react';
+import Box from '@mui/material/Box';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
-  useNavigate,
-} from "react-router-dom";
 
+} from 'react-router-dom';
+import ContactInfo from './screens/contactInfo';
+import ContactList from './screens/contactList';
+import AddContact from './screens/addContact';
 
-function App () {
+function App() {
   return (
-      <div >
-        <style>{'body {background-color:#89B0AE'}</style>
-        <div className={'container'}>
-          <Box className={'boxContainer'}>
-            <Routes>
-            <Route path="/" element={<ContactList/>}/>
-            <Route path="/ContactInfo" element={<ContactInfo/>}>
-              <Route path=":contactId" element={<ContactInfo/>}/>
+    <div>
+      <style>{'body {background-color:#89B0AE'}</style>
+      <div className="container">
+        <Box className="boxContainer">
+          <Routes>
+            <Route path="/" element={<ContactList />} />
+            <Route path="/ContactInfo" element={<ContactInfo />}>
+              <Route path=":contactId" element={<ContactInfo />} />
             </Route>
-            <Route path="/AddContact" element={<AddContact/>}/>
-            </Routes>
-          </Box>
-        </div>
+            <Route path="/AddContact" element={<AddContact />} />
+          </Routes>
+        </Box>
       </div>
-  )
+    </div>
+  );
 }
 
 export default (App);

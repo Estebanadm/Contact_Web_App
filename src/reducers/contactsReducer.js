@@ -1,15 +1,15 @@
-const contactsReducer=(state=[],payload)=>{
-    switch(payload.type){
-        case 'ADD_CONTACT':
-            return [...state,payload.contact];
-        case 'SET_CONTACT_LIST':
-            return [...state,payload.contacts];
-        case 'DELETE_CONTACT':
-            return [...state,payload.contact];
-        case 'EDIT_CONTACT':
-            return [...state,payload.contacts];
-        default:
-             return state;
-    }
+const contactsReducer = (state = [], payload) => {
+  switch (payload.type) {
+    case 'ADD_CONTACT':
+      return [...state, payload.contact];
+    case 'SET_CONTACT_LIST':
+      return [...state, payload.contacts];
+    case 'DELETE_CONTACT':
+      return [...state, payload.contact];
+    case 'EDIT_CONTACT':
+      return [...state, payload.contacts];
+    default:
+      return state;
   }
-    export default contactsReducer;
+};
+export default contactsReducer;

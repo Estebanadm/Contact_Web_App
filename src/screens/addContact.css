@@ -96,3 +96,7 @@
     background-color: #C1E3ED;
     opacity:0.8;
 }
+::placeholder { 
+    color: #4D4D4D;
+    opacity: 1; 
+  }
