@@ -104,14 +104,12 @@ export default function ContactInfo() {
     }
   }, []);
   return (
-    <div>
-      <div className="pictureContainer">
+    <div className={"contact-Container"}>
         <button className="backButton" onClick={() => { goBack(); }}>
           <ArrowBackIcon className="backIcon" />
           <h1 className="buttonText">Contact List</h1>
         </button>
-        <img src={logo} className="infoPicture" />
-      </div>
+        <img src={logo} className="infoPicture" alt='Contact Logo' />
       <div className="contactInfoContainer">
         <div className="contactInput">
           <h1 className="infoText">First Name: </h1>

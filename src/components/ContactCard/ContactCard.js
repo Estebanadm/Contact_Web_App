@@ -12,7 +12,7 @@ function ContactCard({
   return (
     <button onClick={() => onContactClick()}>
       <Box className="contactBox" >
-        <img src={logo} className="profilePicture" />
+        <img src={logo} className="profilePicture" alt="Contact Card Picture" />
         <div className="contactInfo">
           <h1 className="contactHeader">{contactName}</h1>
           <h1 className="contactNumber">{phone}</h1>

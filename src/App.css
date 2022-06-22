@@ -1,14 +1,12 @@
 .container{
-  display: 'flex';
-  justify-content:'center';
-  align-items:'center';
-  height: '100vh';
-
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  height: 100vh;
 }
 .boxContainer {
   position: absolute;
-  width: 850px;
-  height: 700px;
+  max-width: 850px;
   mix-blend-mode: normal;
   background-color: #FFFFFF;
   border-radius: 20px;
@@ -18,7 +16,6 @@
   left:0;
   right:0;
   opacity: 0.8;
-  flexDirection:'row';
 }
 
 ::-webkit-scrollbar {

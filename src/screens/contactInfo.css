@@ -1,184 +1,161 @@
-
-.pictureContainer{
-    display: 'flex';
-    position:absolute;
-    height: 350px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color:#BBBBBB;
-    opacity:0.8;
-  }
-.infoPicture{
-    display: 'flex';
-    position:absolute;
-    width:300px;
-    height:300px;
-    margin:auto;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
+.contact-Container{
+  position:flex;
+  background-color: #FFFFFF;
+  border-radius:10px;
+  margin:10%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  max-width:800px;
 }
-  .backButton{
-    height:40px;
-    display:flex;
-    flex-direction: row;
-    margin:10px;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-top:20px;
-  }
-  .buttonText{
-    margin:auto;
-    text-align: center;
-    font-size: 22px;
-    padding:5px;
-    margin-right:4px;
-    color:#001833;
-  }
-  .backIcon{
-    positon:absolute;
-    margin:auto;
-    color:#001833;
-  }
-  .contactInfoContainer{
-    justify-content:'center';
-    align-items:'center';
-    flex-direction: column;
-    position:absolute;
-    display:flex;
-    height:50%;
-    width:100%;
-    margin:auto;
-    bottom:0;
-    left:0;
-    right:0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    opacity:0.8;
-    background-color:#BBBBBB;
-    border:transparent;
-  }
-  .contactInput{
-    margin:auto;
-    width:400px;
-    height:30px;
-    display:flex;
-    flex-direction: row;
-  }
-  .infoText{
-    text-align: center;
-    font-size: 15px;
-    margin:auto;
-    margin-right:-4px;
-    bottom:15px;
-    width:120px;
-  }
-  .textInput{
-    width:200px;
-    border-radius: 30px;
-    border: 0.2px solid #BBBBBB;
-    padding-left:30px;
-    align-text:center;
-    background-color:#BBBBBB;
-    font-weight: bold;
-  }
-  .editButton{
-    height:50px;
-    width:200px;
-    cursor: pointer;
-    margin:auto;
-    border-radius: 30px;
-    background-color: #C1E3ED;
-    opacity:0.8;
-    margin-right:180px;
-  }
-  .hideButton{
-    height:50px;
-    width:200px;
-    margin:auto;
-    border-radius: 30px;
-    background-color: #C1E3ED;
-    opacity:0;
-  }
-  .row{
-    display:flex;
-    flex-direction: row;
-  }
-  .deleteIcon{
-    transition:transform 200ms ease-in;
-    cursor:pointer;
-  }
-  .deleteIcon:hover{
-    transform:scale(1.1);
-}
-.error-PopUp{
+.infoPicture {
   display:flex;
-  align-items:center;
-  justify-contenct:center;
+  width: 40%;
+  margin:20px auto;
+
+}
+.backButton {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.buttonText {
+  margin: auto;
+  text-align: center;
+  font-size: 22px;
+  padding: 5px;
+  margin-right: 4px;
+  color: #001833;
+}
+.backIcon {
+  positon: absolute;
+  margin: auto;
+  color: #001833;
+}
+.contactInfoContainer {
+  justify-content: "center";
+  align-items: "center";
+  flex-direction: column;
+  display: flex;
+  height: 50%;
+  width: 100%;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.8;
+  border: transparent;
+}
+.contactInput {
+  margin: auto;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.infoText {
+  font-size:70%;
+  margin: auto;
+  bottom: 5px;
+}
+.textInput {
+  border: 0;
+  border-bottom: 2px solid #bbbbbb;
+  margin-left: 30px;
+  align-text: center;
+  font-weight: bold;
+}
+.editButton {
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 30px;
+  background-color: #c1e3ed;
+  opacity: 0.8;
+  margin-right: 180px;
+}
+.hideButton {
+  height: 50px;
+  width: 200px;
+  margin: auto;
+  border-radius: 30px;
+  background-color: #c1e3ed;
+  opacity: 0;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.deleteIcon {
+  transition: transform 200ms ease-in;
+  cursor: pointer;
+}
+.deleteIcon:hover {
+  transform: scale(1.1);
+}
+.error-PopUp {
+  display: flex;
+  align-items: center;
+  justify-contenct: center;
   flex-direction: column;
 }
-.errorMessageButton{
-  background-color:#53d769;
-  border-radius:30px;
+.errorMessageButton {
+  background-color: #53d769;
+  border-radius: 30px;
   width: 60px;
-  height:30px;
-  margin-top:20px;
+  height: 30px;
+  margin-top: 20px;
 }
-.deleteConfirmationContainer{
-  width:400px;
-  height:200px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  background-color:#BBBBBB;
-  border:10px;
-  padding:15px;
-  opacity:0.8;
-  border-radius:15px;
+.deleteConfirmationContainer {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #bbbbbb;
+  border: 10px;
+  padding: 15px;
+  opacity: 0.8;
+  border-radius: 15px;
 }
-.deleteHeader{
-
+.deleteHeader {
 }
-.deleteBody{
-  font-weight:bold;
-
+.deleteBody {
+  font-weight: bold;
 }
-.deleteButtonsContainer{
-  padding-top:30px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.deleteButtonsContainer {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cancelButton{
-  margin:auto;
-  padding:15px;
-  background-color:#89B0AE;
-  padding-right:30px;
-  padding-left:30px;
+.cancelButton {
+  margin: auto;
+  padding: 15px;
+  background-color: #89b0ae;
+  padding-right: 30px;
+  padding-left: 30px;
   border-top-left-radius: 10px;
-  border-bottom-left-radius:10px;
-  margin-right:1px;
-  font-weight:bold;
+  border-bottom-left-radius: 10px;
+  margin-right: 1px;
+  font-weight: bold;
 }
-.confirmButton{
-  margin:auto;
-  padding:15px;
-  background-color:#89B0AE;
-  padding-right:30px;
-  padding-left:30px;
+.confirmButton {
+  margin: auto;
+  padding: 15px;
+  background-color: #89b0ae;
+  padding-right: 30px;
+  padding-left: 30px;
   border-top-right-radius: 10px;
-  border-bottom-right-radius:10px;
-  margin-left:1px;
-  font-weight:bold;
+  border-bottom-right-radius: 10px;
+  margin-left: 1px;
+  font-weight: bold;
 }
-  
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

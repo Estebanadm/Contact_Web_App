@@ -14,10 +14,6 @@ import AddContact from './screens/addContact';
 
 function App() {
   return (
-    <div>
-      <style>{'body {background-color:#89B0AE'}</style>
-      <div className="container">
-        <Box className="boxContainer">
           <Routes>
             <Route path="/" element={<ContactList />} />
             <Route path="/ContactInfo" element={<ContactInfo />}>
@@ -25,9 +21,6 @@ function App() {
             </Route>
             <Route path="/AddContact" element={<AddContact />} />
           </Routes>
-        </Box>
-      </div>
-    </div>
   );
 }
 
