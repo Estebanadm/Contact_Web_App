@@ -1,18 +1,18 @@
-import { appStore } from '..';
+import { appStore } from "..";
 
 export const addToContacts = (contact) => {
-  console.log('adding : ', contact);
+  console.log("adding : ", contact);
   return {
-    type: 'ADD_CONTACT',
-    contact: appStore.getState().contactsReducer[0].push(contact),
+    type: "ADD_CONTACT",
+    contact: contact,
   };
 };
-export const editContact = (contact, index) => {
-  console.log('editing : ', contact);
+export const editContact = (contact) => {
+  console.log("editing : ", contact);
   return {
-    type: 'EDIT_CONTACT',
-    contacts: appStore.getState().contactsReducer[0].map((item, i) => {
-      if (i === index) {
+    type: "EDIT_CONTACT",
+    contacts: appStore.getState().contactsReducer.map((item, i) => {
+      if (i === parseInt(contact.id)) {
         item.first_name = contact.first_name;
         item.last_name = contact.last_name;
         item.phoneNumber = contact.phoneNumber;
@@ -23,16 +23,16 @@ export const editContact = (contact, index) => {
   };
 };
 export const setContacts = (contacts) => {
-  console.log('Setting: ', contacts);
+  console.log("Setting: ", contacts);
   return {
-    type: 'SET_CONTACT_LIST',
+    type: "SET_CONTACT_LIST",
     contacts,
   };
 };
-export const deleteContact = (contact) => {
-  console.log('Setting: ', contact);
+export const deleteContact = (id) => {
+  console.log("deleting ", id);
   return {
-    type: 'SELECT_CONTACT',
-    contact,
+    type: "DELETE_CONTACT",
+    id,
   };
 };

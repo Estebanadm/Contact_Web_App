@@ -1,11 +1,12 @@
 const contactsReducer = (state = [], payload) => {
   switch (payload.type) {
     case 'ADD_CONTACT':
-      return [...state, payload.contact];
+      state.unshift(payload.contact);
+      return state;
     case 'SET_CONTACT_LIST':
-      return [...state, payload.contacts];
+      return [...state.concat(payload.contacts)];
     case 'DELETE_CONTACT':
-      return [...state, payload.contact];
+      return [...state.filter((contact)=>contact.id!=payload.id)];
     case 'EDIT_CONTACT':
       return [...state, payload.contacts];
     default:

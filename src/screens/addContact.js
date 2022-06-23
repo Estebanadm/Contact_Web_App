@@ -5,11 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import cloneDeep from 'lodash/cloneDeep';
-import SearchBar from '../components/SearchBar/SearchBar';
-import ContactCard from '../components/ContactCard/ContactCard';
-import data from '../Assets/Data/MOCK_DATA.json';
 import { editContact, addToContacts } from '../actions/contactActions';
-import logo from '../Assets/Images/Profile-1.png';
+import { confirmAlert } from 'react-confirm-alert';
 
 import addLogo from '../Assets/Images/user-circle-plus.png';
 
@@ -17,48 +14,74 @@ export default function AddContact() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goBack = () => { navigate('/'); };
-  const contacts = useSelector((state) => state.contactsReducer[0]) || [];
+  const contacts = useSelector((state) => state.contactsReducer);
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [changeMade, setChangeMade] = useState();
+  const showInvalidAlert = (validPhone, validEmail) => {
+    console.log(validPhone, validEmail);
+    confirmAlert({
+      customUI: ({ onClose }) => (
+        <div className="popUpContainer">
+          <h1>Error</h1>
+          <p>
+            Please Introduce a valid {" "}
+            {!validPhone && validPhone !== ""
+              ? !validEmail && validEmail != ""
+                ? "phone number and email"
+                : "phoneNumber"
+              : "email"}
+          </p>
+          <button onClick={onClose} className="errorMessageButton">
+            Confirm
+          </button>
+        </div>
+      ),
+    });
+  };
   function validatePhoneNumber(phoneNumber) {
-    const cleaned = (`${phoneNumber}`).replace(/\D/g, '');
+    const cleaned = `${phoneNumber}`.replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (phoneNumber === undefined) {
+      return "";
+    }
     if (match) {
       return `${match[1]}-${match[2]}-${match[3]}`;
     }
     return null;
   }
   function validateEmail(email) {
-    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const re =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+    if (email === undefined) {
+      return "";
+    }
     return re.test(email);
   }
-  const saveNewContact = () => {
+  const saveNewContact = async() => {
     const validPhoneNumber = validatePhoneNumber(phoneNumber);
     const validEmail = validateEmail(email);
-    const lastId = cloneDeep(contacts).pop().id;
+    const lastId = cloneDeep(contacts)[contacts.length-1].id;
     console.log(lastId);
     const newContact = {
       id: lastId + 1,
-      first_name: firstName,
-      last_name: lastName,
+      first_name: firstName?firstName:"",
+      last_name: lastName?lastName:"",
       phoneNumber: validPhoneNumber,
-      email,
+      email:validEmail,
     };
-    if (validPhoneNumber && validEmail) {
-      dispatch(addToContacts(newContact));
+    if ((validPhoneNumber || validPhoneNumber == "") &&
+    (validEmail || validEmail === "")) {
+      await dispatch(addToContacts(newContact));
       goBack();
     } else {
-      if (!validPhoneNumber) {
-        alert('Please enter a valid phone number');
-      }
-      if (!validEmail) {
-        alert('Please enter a valid email');
-      }
+      console.log(validEmail);
+      console.log(validPhoneNumber);
+      showInvalidAlert(validPhoneNumber,validEmail);
     }
   };
   return (

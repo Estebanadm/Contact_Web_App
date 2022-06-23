@@ -1,12 +1,13 @@
 .contactBox{
     display:flex;
-    background-color: #BEE3DB;
+    background-color: #D9DBE3;
     width:220px;
     padding:20px;
     border-radius: 20px;
     margin:10px;
     height: 30px;
-    border: 1px solid #19A4DF;
+    border: 1px solid #8C979A;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     left: 0%;
     right: 0%;
     top: 0%;

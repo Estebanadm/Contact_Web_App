@@ -24,7 +24,7 @@
 .buttonText {
   margin: auto;
   text-align: center;
-  font-size: 22px;
+  font-size: 15px;
   padding: 5px;
   margin-right: 4px;
   color: #001833;
@@ -63,6 +63,7 @@
   border: 0;
   border-bottom: 2px solid #bbbbbb;
   margin-left: 30px;
+  padding-right:5px;
   align-text: center;
   font-weight: bold;
 }
@@ -70,11 +71,12 @@
   height: 50px;
   width: 200px;
   cursor: pointer;
+  padding:auto;
   margin: auto;
+  margin-left:10px;
   border-radius: 30px;
   background-color: #c1e3ed;
   opacity: 0.8;
-  margin-right: 180px;
 }
 .hideButton {
   height: 50px;
@@ -90,6 +92,7 @@
 }
 .deleteIcon {
   transition: transform 200ms ease-in;
+  transform: scale(0.6);
   cursor: pointer;
 }
 .deleteIcon:hover {
@@ -108,8 +111,8 @@
   height: 30px;
   margin-top: 20px;
 }
-.deleteConfirmationContainer {
-  width: 400px;
+.popUpContainer {
+  width: 350px;
   height: 200px;
   display: flex;
   align-items: center;
@@ -117,12 +120,12 @@
   flex-direction: column;
   background-color: #bbbbbb;
   border: 10px;
-  padding: 15px;
+  padding: 20px;
+  margin:auto;
   opacity: 0.8;
   border-radius: 15px;
 }
-.deleteHeader {
-}
+
 .deleteBody {
   font-weight: bold;
 }

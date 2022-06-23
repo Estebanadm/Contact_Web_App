@@ -25,9 +25,9 @@ function ContactList() {
     navigate("/AddContact");
   };
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contactsReducer[0]) || [];
-  const [filterContacts, setFilterContacts] = useState(contacts);
-  const [loading, setLoading] = useState(false);
+  const contacts = useSelector((state) => state.contactsReducer);
+  console.log(contacts);
+  const [filterContacts, setFilterContacts] = useState();
   const [filtering, setFiltering] = useState(false);
   const [openAddPopUp, setOpenAddPopUp] = useState(false);
   const filterFunction = (text) => {
@@ -47,13 +47,14 @@ function ContactList() {
   };
   const getData = () => data;
   useEffect(() => {
-    setLoading(true);
-    if (!contacts || contacts.length === 0) {
+    console.log("WE are here");
+    console.log(contacts)
+    if (!contacts || contacts.length === 0||contacts===[]) {
       dispatch(setContacts(getData()));
     }
-    setLoading(false);
   }, []);
-  console.log(contacts);
+  console.log("contacts:", contacts)
+  console.log("filterContacts: ",filterContacts)
   return (
     <>
       <div className="headerContainer">
@@ -69,7 +70,7 @@ function ContactList() {
                     firstName={contact.first_name}
                     lastName={contact.last_name}
                     phoneNumber={contact.phoneNumber}
-                    id={index}
+                    id={contact.id}
                     onContactClick={() => {
                       navigateToContactInfo(contact.id);
                     }}
