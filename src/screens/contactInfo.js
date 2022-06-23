@@ -49,11 +49,11 @@ export default function ContactInfo() {
         <div className="popUpContainer">
           <h1>Error</h1>
           <p>
-            Please Introduce a valid
+            Please Introduce a valid {" "}
             {!validPhone && validPhone !== ""
-              ? !validEmail && validEmail != ""
+              ? !validEmail && validEmail != ""||!validEmail && !validEmail
                 ? "phone number and email"
-                : "phoneNumber"
+                : "phone Number"
               : "email"}
           </p>
           <button onClick={onClose} className="errorMessageButton">
