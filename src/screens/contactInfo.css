@@ -1,16 +1,15 @@
-.contact-Container{
-  position:flex;
-  background-color: #FFFFFF;
-  border-radius:10px;
-  margin:10%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  max-width:800px;
+.contact-Container {
+  position: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
 }
 .infoPicture {
-  display:flex;
+  display: flex;
   width: 40%;
-  margin:20px auto;
-
+  margin: 20px auto;
 }
 .backButton {
   height: 40px;
@@ -53,7 +52,7 @@
   flex-direction: row;
 }
 .infoText {
-  font-size:70%;
+  font-size: 70%;
   margin: auto;
   bottom: 5px;
 }
@@ -61,7 +60,7 @@
   border: 0;
   border-bottom: 2px solid #bbbbbb;
   margin-left: 30px;
-  padding-right:5px;
+  padding-right: 5px;
   align-text: center;
   font-weight: bold;
 }
@@ -69,9 +68,9 @@
   height: 50px;
   width: 200px;
   cursor: pointer;
-  padding:auto;
+  padding: auto;
   margin: auto;
-  margin-left:10px;
+  margin-left: 10px;
   border-radius: 30px;
   background-color: #c1e3ed;
   opacity: 0.8;
@@ -119,7 +118,7 @@
   background-color: #bbbbbb;
   border: 10px;
   padding: 20px;
-  margin:auto;
+  margin: auto;
   opacity: 0.8;
   border-radius: 15px;
 }
@@ -154,13 +153,13 @@
   border-bottom-right-radius: 10px;
   margin-left: 1px;
   font-weight: bold;
-}.center{
-  width:100%;
-  margin:auto;
-  display:flex;
-  align-items:center;
 }
-
+.center {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
 
 ::-webkit-scrollbar {
   width: 0px;

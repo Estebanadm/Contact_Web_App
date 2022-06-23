@@ -1,7 +1,7 @@
 export const addToContacts = (contact) => {
-  console.log('adding : ', contact);
+  console.log("adding : ", contact);
   return {
-    type: 'ADD_CONTACT',
+    type: "ADD_CONTACT",
     contact,
   };
 };

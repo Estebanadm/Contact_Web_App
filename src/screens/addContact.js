@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./addContact.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Box from "@mui/material/Box";
 import cloneDeep from "lodash/cloneDeep";
-import { editContact, addToContacts } from "../actions/contactActions";
+import {  addToContacts } from "../actions/contactActions";
 import { confirmAlert } from "react-confirm-alert";
 
 import addLogo from "../Assets/Images/user-circle-plus.png";
@@ -32,7 +32,8 @@ export default function AddContact() {
           <p>
             Please Introduce a valid{" "}
             {!validPhone && validPhone !== ""
-              ? !validEmail && validEmail != ""||!validEmail && !validEmail
+              ? (!validEmail && validEmail != "") ||
+                (!validEmail && !validEmail)
                 ? "phone number and email"
                 : "phone Number"
               : "email"}

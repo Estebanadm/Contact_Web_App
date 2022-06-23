@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./contactInfo.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { confirmAlert } from "react-confirm-alert";
-import SearchBar from "../components/SearchBar/SearchBar";
-import ContactCard from "../components/ContactCard/ContactCard";
-import data from "../Assets/Data/MOCK_DATA.json";
-import {
-  deleteContact,
-  editContact,
-  setContacts,
-} from "../actions/contactActions";
+import { deleteContact, editContact } from "../actions/contactActions";
 import logo from "../Assets/Images/Profile-1.png";
 import deleteIcon from "../Assets/Images/delete.png";
 
@@ -26,7 +19,7 @@ export default function ContactInfo() {
         state.contactsReducer &&
         state.contactsReducer.filter((contact) => contact.id === contactId)
     ) || [];
-  const contactInfo = contact[0]||[];
+  const contactInfo = contact[0] || [];
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(contactInfo.first_name);
   const [lastName, setLastName] = useState(contactInfo.last_name);
@@ -37,7 +30,7 @@ export default function ContactInfo() {
     navigate("/");
   };
 
-  const confirmDeleteContact =async (id) => {
+  const confirmDeleteContact = async (id) => {
     if (contact) {
       await dispatch(deleteContact(id));
     }
@@ -49,9 +42,10 @@ export default function ContactInfo() {
         <div className="popUpContainer">
           <h1>Error</h1>
           <p>
-            Please Introduce a valid {" "}
+            Please Introduce a valid{" "}
             {!validPhone && validPhone !== ""
-              ? !validEmail && validEmail != ""||!validEmail && !validEmail
+              ? (!validEmail && validEmail != "") ||
+                (!validEmail && !validEmail)
                 ? "phone number and email"
                 : "phone Number"
               : "email"}
@@ -114,7 +108,7 @@ export default function ContactInfo() {
     const validPhoneNumber = validatePhoneNumber(phoneNumber);
     const validEmail = validateEmail(email);
     const newContact = {
-      id:contactId,
+      id: contactId,
       first_name: firstName !== undefined ? firstName : "",
       last_name: lastName !== undefined ? lastName : "",
       phoneNumber: validPhoneNumber,
@@ -126,7 +120,6 @@ export default function ContactInfo() {
     ) {
       goBack();
       await dispatch(editContact(newContact));
-      
     } else {
       showInvalidAlert(validPhoneNumber, validEmail);
     }
