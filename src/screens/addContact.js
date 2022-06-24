@@ -149,7 +149,7 @@ export default function AddContact() {
         <div className="center">
           <button
             className={changeMade ? "addContactButton" : "hideButton"}
-            onClick={() => (changeMade ? saveNewContact : () => {})}
+            onClick={() => (changeMade ? saveNewContact() : () => {})}
           >
             <h1 className="buttonText">Add Contact</h1>
           </button>
