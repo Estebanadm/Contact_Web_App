@@ -34,14 +34,12 @@
   flex-direction: column;
   bottom: 20px;
   left: 10px;
-  rigt: 25px;
 }
 .contactHeader {
   position: relative;
   height: 30px;
   display: flex;
   font-size: 12px;
-  font-weight: semi-bold;
   font-style: normal;
 }
 .contactNumber {
@@ -49,7 +47,6 @@
   height: 30px;
   display: flex;
   font-size: 12px;
-  font-weight: semi-bold;
   font-style: normal;
   bottom: 5px;
 }

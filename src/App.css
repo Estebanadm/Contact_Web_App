@@ -1,25 +1,10 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.boxContainer {
-  position: absolute;
-  max-width: 850px;
-  mix-blend-mode: normal;
-  background-color: #ffffff;
-  border-radius: 20px;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.8;
-}
-
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
   padding: 0px;
+}
+
+button {
+  background: transparent;
+  border: none !important;
 }

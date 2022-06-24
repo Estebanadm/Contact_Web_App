@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Box from "@mui/material/Box";
-import cloneDeep from "lodash/cloneDeep";
-import {  addToContacts } from "../actions/contactActions";
+import { addToContacts } from "../actions/contactActions";
 import { confirmAlert } from "react-confirm-alert";
 
 import addLogo from "../Assets/Images/user-circle-plus.png";
@@ -18,22 +17,20 @@ export default function AddContact() {
   };
   const contacts = useSelector((state) => state.contactsReducer);
 
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [email, setEmail] = useState();
-  const [changeMade, setChangeMade] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [changeMade, setChangeMade] = useState(false);
   const showInvalidAlert = (validPhone, validEmail) => {
-    console.log(validPhone, validEmail);
     confirmAlert({
       customUI: ({ onClose }) => (
         <div className="popUpContainer">
           <h1>Error</h1>
           <p>
             Please Introduce a valid{" "}
-            {!validPhone && validPhone !== ""
-              ? (!validEmail && validEmail != "") ||
-                (!validEmail && !validEmail)
+            {!validPhone && phoneNumber !== ""
+              ? !validPhone && !validEmail && email !== ""
                 ? "phone number and email"
                 : "phone Number"
               : "email"}
@@ -48,44 +45,41 @@ export default function AddContact() {
   function validatePhoneNumber(phoneNumber) {
     const cleaned = `${phoneNumber}`.replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (phoneNumber === undefined) {
-      return "";
-    }
     if (match) {
       return `${match[1]}-${match[2]}-${match[3]}`;
     }
-    return null;
+    return false;
   }
   function validateEmail(email) {
-    const re =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (email === undefined) {
-      return "";
-    }
-    return re.test(email);
+    return email
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   }
-  const saveNewContact = async () => {
+  const saveNewContact = () => {
     const validPhoneNumber = validatePhoneNumber(phoneNumber);
     const validEmail = validateEmail(email);
-    const lastId = cloneDeep(contacts)[contacts.length - 1].id;
-    console.log(lastId);
+    var lastId = 0;
+    contacts.forEach((element) => {
+      if (element.id > lastId) {
+        lastId = parseInt(element.id);
+      }
+    });
     const newContact = {
-      id: lastId + 1,
-      first_name: firstName ? firstName : "",
-      last_name: lastName ? lastName : "",
-      phoneNumber: validPhoneNumber,
-      email: validEmail,
+      id: (lastId + 1).toString(),
+      first_name: firstName,
+      last_name: lastName,
+      phoneNumber: phoneNumber,
+      email,
     };
     if (
-      (validPhoneNumber || validPhoneNumber == "") &&
-      (validEmail || validEmail === "")
+      (validPhoneNumber || phoneNumber === "") &&
+      (validEmail || email === "")
     ) {
-      await dispatch(addToContacts(newContact));
+      dispatch(addToContacts(newContact));
       goBack();
     } else {
-      console.log(validEmail);
-      console.log(validPhoneNumber);
       showInvalidAlert(validPhoneNumber, validEmail);
     }
   };

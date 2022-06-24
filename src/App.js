@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import "./App.css";
 import React from "react";
-import Box from "@mui/material/Box";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ContactInfo from "./screens/contactInfo";
 import ContactList from "./screens/contactList";
 import AddContact from "./screens/addContact";

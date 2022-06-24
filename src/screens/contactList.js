@@ -18,10 +18,8 @@ function ContactList() {
   };
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contactsReducer);
-  console.log(contacts);
   const [filterContacts, setFilterContacts] = useState();
   const [filtering, setFiltering] = useState(false);
-  const [openAddPopUp, setOpenAddPopUp] = useState(false);
   const filterFunction = (text) => {
     if (text.length > 0) {
       setFiltering(true);
@@ -39,14 +37,10 @@ function ContactList() {
   };
   const getData = () => data;
   useEffect(() => {
-    console.log("WE are here");
-    console.log(contacts);
     if (!contacts || contacts.length === 0 || contacts === []) {
       dispatch(setContacts(getData()));
     }
   }, []);
-  console.log("contacts:", contacts);
-  console.log("filterContacts: ", filterContacts);
   return (
     <>
       <div className="headerContainer">
@@ -55,7 +49,7 @@ function ContactList() {
           openAddContact={openAddContact}
         />
       </div>
-      <div className="contactsContainer">
+      <div >
         <div className="gridContainer">
           {contacts.length > 0 &&
             (filterContacts > 0 || filtering ? filterContacts : contacts).map(

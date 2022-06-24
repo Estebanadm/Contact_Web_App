@@ -36,16 +36,14 @@ export default function ContactInfo() {
     }
   };
   const showInvalidAlert = (validPhone, validEmail) => {
-    console.log(validPhone, validEmail);
     confirmAlert({
       customUI: ({ onClose }) => (
         <div className="popUpContainer">
           <h1>Error</h1>
           <p>
             Please Introduce a valid{" "}
-            {!validPhone && validPhone !== ""
-              ? (!validEmail && validEmail != "") ||
-                (!validEmail && !validEmail)
+            {!validPhone && phoneNumber !== ""
+              ? !validPhone && !validEmail && email !== ""
                 ? "phone number and email"
                 : "phone Number"
               : "email"}
@@ -87,39 +85,34 @@ export default function ContactInfo() {
   function validatePhoneNumber(phoneNumber) {
     const cleaned = `${phoneNumber}`.replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (phoneNumber === undefined) {
-      return "";
-    }
     if (match) {
       return `${match[1]}-${match[2]}-${match[3]}`;
     }
-    return null;
+    return false;
   }
   function validateEmail(email) {
-    const re =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (email === undefined) {
-      return "";
-    }
-    return re.test(email);
+    return email
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   }
-  const saveContactInformation = async () => {
+  const saveContactInformation = () => {
     const validPhoneNumber = validatePhoneNumber(phoneNumber);
     const validEmail = validateEmail(email);
     const newContact = {
       id: contactId,
       first_name: firstName !== undefined ? firstName : "",
       last_name: lastName !== undefined ? lastName : "",
-      phoneNumber: validPhoneNumber,
+      phoneNumber,
       email,
     };
     if (
-      (validPhoneNumber || validPhoneNumber == "") &&
-      (validEmail || validEmail === "")
+      (validPhoneNumber || phoneNumber === "") &&
+      (validEmail || email === "")
     ) {
       goBack();
-      await dispatch(editContact(newContact));
+      dispatch(editContact(newContact));
     } else {
       showInvalidAlert(validPhoneNumber, validEmail);
     }
@@ -189,7 +182,7 @@ export default function ContactInfo() {
             <h1 className="buttonText">Save Changes</h1>
           </button>
           <button onClick={() => showDeleteConfirmationModal()}>
-            <img src={deleteIcon} className="deleteIcon" />
+            <img src={deleteIcon} className="deleteIcon" alt="Delete Button" />
           </button>
         </div>
       </div>
